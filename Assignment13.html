@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissor Game</title>
+	<link rel="stylesheet" type="text/css" href="Assignment12.css">
+	<meta charset="utf-8">
+</head>
+<body>
+	<header>
+		<h1>
+			Rock Paper Scissor
+		</h1>
+	</header>
+
+	<div class="notes">
+		<p>
+			To Play the Game choose any one Option..!!!
+		</p>
+	</div>
+
+	<div class="options">
+
+		<p  class="option">
+		<img src="loading.png" id="userImg">
+		</p>
+
+		V/S
+
+		<p  class="option">
+		<img src="loading.png" id="compImg">
+		</p>
+
+	</div>
+
+	<div class="notes">
+		<p>Make Your Move</p>
+	</div>
+
+	<br>
+
+	<div class="start-button">
+	<a href="Assignment13.html" class="button">Play Again</a>
+	</div>
+
+	<br>
+
+	<div class="note1">
+		<p><br>©️ Kunj Soni. Sheridan College </p>
+	</div>
+
+	<script>
+			var userChoice = prompt("Choose any one option from below:\n1.Rock\n2.Paper\n3.Scissor");
+			/*const rock_div = document.getElementById("Rock");
+			const paper_div = document.getElementById("Paper");
+			const scissor_div = document.getElementById("Scissor");*/
+			var notes_p = document.querySelector(".notes");
+			var userImg = document.getElementById("userImg");
+			var compImg = document.getElementById("compImg");
+                        
+			function getComputerChoice(){
+				const options = ['Rock','Paper','Scissor'];
+				const randomChoice = Math.floor(Math.random()*3);	
+				return options[randomChoice];
+			}		
+
+			function win(userChoice,computerChoice){
+					notes_p.innerHTML = userChoice + " beats " + computerChoice + ". You Win..🏆🏆!! ";
+
+			}	
+
+			function lose(userChoice,computerChoice){
+					notes_p.innerHTML = userChoice + " lose to " + computerChoice + ". You Lose..🤙🤙!! ";
+			}
+
+			function draw(userChoice,computerChoice){
+						notes_p.innerHTML = userChoice + " equals to " + computerChoice + ". It is a draw..🥴 🥴 !! ";
+			}
+
+
+			function gameResult(userChoice){
+			const computerChoice = getComputerChoice();
+			
+			if(computerChoice == "Rock"){
+         	    compImg.src="rock.png";
+          	}
+            else if(computerChoice == "Paper"){
+                
+         	    compImg.src="paper.png";
+            }
+            else {
+             
+         	    compImg.src="scissor.png";
+            }
+
+
+			if((userChoice==="Rock" && computerChoice==="Scissor")||(userChoice==="Paper" && computerChoice==="Rock")||(userChoice==="Scissor" && computerChoice==="Paper")){
+				return win(userChoice, computerChoice);
+				}
+
+			else if((userChoice==="Rock" && computerChoice==="Paper")||(userChoice==="Paper" && computerChoice==="Scissor")||(userChoice==="Scissor" && computerChoice==="Rock")){
+				return lose(userChoice, computerChoice);
+				}
+
+			else{
+				return draw(userChoice, computerChoice);
+				}
+            };
+                 
+
+            if(userChoice == 1){
+            	userImg.src="rock.png";
+         	    gameResult("Rock");
+            }
+            else if(userChoice == 2){
+            	userImg.src="paper.png";
+                gameResult("Paper");
+            }
+            else if (userChoice == 3){
+            	userImg.src="scissor.png";
+                gameResult("Scissor");
+            }
+            else{
+                alert("Please select from 1, 2 and 3 to play this game...!!!!");
+                window.location.reload();
+            }
+
+		</script>
+
+</body>
+</html>
